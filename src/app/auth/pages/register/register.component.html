@@ -1,0 +1,50 @@
+<app-form-card>
+  <div>
+    <div class="content-header text-center">
+      <p class="text-muted">¡Bienvenido!</p>
+    </div>
+
+    <!-- Register -->
+    <div>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ej: Dan R" formControlName = "email" type = "email" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Ej: example@gmail.com" formControlName = "password" type = "password" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+        <section class="example-section">
+          <mat-checkbox class="example-margin"
+            ><span class="text-muted"
+              >Acepto los <a href = "#" class="text-muted text-nowrap">Términos del servicio</a> y la <a href = "#" class="text-muted text-nowrap">Política de Privacidad</a></span
+            ></mat-checkbox
+          >
+        </section>
+
+        <button type = "submit" class="btn btn-gray text-center w-100">Registrarse</button>
+
+        <div class="text-center mt-4">
+          <label>
+            <a routerLink = "/auth/login" class="text-muted text-nowrap">
+              ¿Ya tienes cuenta? ¡Inicia Sesión!
+            </a>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-form-card>

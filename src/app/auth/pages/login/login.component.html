@@ -1,0 +1,46 @@
+<app-form-card>
+  <div>
+    <div class="content-header text-center">
+      <p class="text-muted">¡Bienvenido de Nuevo!</p>
+    </div>
+
+    <!-- Default Login -->
+    <div>
+      <form class="example-form" [formGroup]="formLogin" (ngSubmit) = "onSubmit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Ej: example@gmail.com" formControlName = "email" type = "email" />
+        </mat-form-field>
+
+        <div class="text-end mb-2">
+          <label
+            ><a href="#" class="text-muted" routerLink = "/auth/recover">¿Olvidaste tu contraseña?</a></label
+          >
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder=""  formControlName = "password" />
+        </mat-form-field>
+
+        <section class="example-section">
+          <mat-checkbox class="example-margin"
+            ><span class="text-muted"
+              >Mantener sesión activa</span
+            ></mat-checkbox
+          >
+        </section>
+
+        <button type = "submit" [disabled] = "!formLogin.valid" class="btn btn-gray text-center w-100">Iniciar Sesión</button>
+
+        <div class="text-center mt-4">
+          <label>
+            <a routerLink = "/auth/register" class="text-muted text-nowrap">
+              ¿No tienes cuenta? ¡Regístrate!
+            </a>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-form-card>
