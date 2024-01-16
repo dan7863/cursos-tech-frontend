@@ -1,4 +1,4 @@
-import { Builder } from "../../../models/alert.model";
+import { Builder } from "../../../../models/alert.model";
 import { Alert } from "./alert";
 
 

@@ -15,7 +15,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoverComponent } from './pages/recover/recover.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { LoaderService } from '../shared/services/loader/loader.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -36,7 +38,12 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     MatCheckboxModule,
     ReactiveFormsModule,
   ],
-  providers: [ CookieService]
+  providers: [ CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:  LoaderService,
+      multi: true
+    }]
 })
 
 export class AuthModule { }

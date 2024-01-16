@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Login } from '../../../models/user.model';
-import { SweetalertService } from '../../../services/sweetalert/sweetalert.service';
+import { SweetalertService } from '../../../shared/services/sweetalert/sweetalert.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -37,22 +37,19 @@ export class LoginComponent implements OnInit{
 
   onSubmit():void {
     if (this.formLogin.valid) {
+      this.loginData.email = this.formLogin.get('email')!.value,
+      this.loginData.password = this.formLogin.get('password')!.value
 
-      // const director = new Director();
-      // this.sweetAlertService.errorAlert(director,  errorMsg);
+      this.authService.signIn(this.loginData).subscribe({
+        next:(res) => {
+          this.cookieService.set('token', res.token);
+          this.sweetAlertService.successAlert('You are successfully logged in');
+          this.router.navigateByUrl("/")
+        },
+        error: (error) => {
+          this.sweetAlertService.errorAlert(error);
+        }
+      });
     }  
-    this.loginData.email = this.formLogin.get('email')!.value,
-    this.loginData.password = this.formLogin.get('password')!.value
-
-    this.authService.signIn(this.loginData).subscribe({
-      next:(res) => {
-        this.cookieService.set('token', res.token);
-        this.sweetAlertService.successAlert('You are successfully logged in');
-        this.router.navigateByUrl("/")
-      },
-      error: (error) => {
-        this.sweetAlertService.errorAlert(error);
-      }
-    });
   }
 }

@@ -1,17 +1,18 @@
 import { CanActivateFn } from '@angular/router';
 import {inject} from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRouteSnapshot } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
+import { SweetalertService } from '../../shared/services/sweetalert/sweetalert.service';
 
 export const roleGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
-  // const router = inject(ActivatedRouteSnapshot);
-  const decoder = inject(jwtDecode);
+  const sweetAlertService = inject(SweetalertService);
 
-  console.log(decoder(authService.getToken()));
+  if(!authService.getToken()) {
+    sweetAlertService.errorAlert("Not Authorized");
+    return false; 
+  }
+ 
+  const info = atob(authService.getToken().split('.')[1]);
   
-  // const expectedRole = router.data['expectedRole'];
-
   return true;
 };

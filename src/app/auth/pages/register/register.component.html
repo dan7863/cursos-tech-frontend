@@ -6,25 +6,25 @@
 
     <!-- Register -->
     <div>
-      <form class="example-form">
+      <form [formGroup]="formSignup" class="example-form" (ngSubmit) = "onSubmit()">
         <mat-form-field class="example-full-width">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Ej: Dan R" formControlName = "email" type = "email" />
+            <input matInput placeholder="Ej: Dan R" formControlName = "name" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Correo</mat-label>
-          <input matInput placeholder="Ej: example@gmail.com" formControlName = "password" type = "password" />
+          <input matInput placeholder="Ej: example@gmail.com" formControlName = "email" type = "email" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Contraseña</mat-label>
-          <input matInput />
+          <input matInput formControlName = "password" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label>Confirmar contraseña</mat-label>
-            <input matInput />
+            <input matInput formControlName = "confirmPassword" />
           </mat-form-field>
 
         <section class="example-section">
@@ -35,7 +35,7 @@
           >
         </section>
 
-        <button type = "submit" class="btn btn-gray text-center w-100">Registrarse</button>
+        <button type = "submit" [disabled]="formSignup.invalid" class="btn btn-gray text-center w-100">Registrarse</button>
 
         <div class="text-center mt-4">
           <label>

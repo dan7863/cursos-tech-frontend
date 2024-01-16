@@ -9,10 +9,13 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -20,8 +23,12 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     NgbModule,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
-  providers: [ provideHttpClient(), {provide: JWT_OPTIONS,useValue: JWT_OPTIONS},JwtHelperService],
+  providers: [ provideHttpClient(),
+    {provide: JWT_OPTIONS,useValue: JWT_OPTIONS},
+    JwtHelperService,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

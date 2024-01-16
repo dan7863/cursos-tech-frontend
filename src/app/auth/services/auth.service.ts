@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Login } from '../../models/user.model';
+import { Login, SignUp } from '../../models/user.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
@@ -11,6 +11,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
   LOGIN_API: string = 'http://localhost:3014/api/signin';
+  REGISTER_API: string = 'http://localhost:3014/api/signup';
+
   httpHeaders = new HttpHeaders().set('Content-type', 'application/json');
 
   constructor(private httpClient: HttpClient, 
@@ -19,6 +21,16 @@ export class AuthService {
 
   signIn(data: Login): Observable<any>{
     return this.httpClient.post(this.LOGIN_API, data, {headers: this.httpHeaders})
+    .pipe(catchError(this.handleError));
+  }
+
+  signUp(data: SignUp): Observable<any>{
+    return this.httpClient.post(this.REGISTER_API, data, {headers: this.httpHeaders})
+    .pipe(catchError(this.handleError));
+  }
+
+  recover(data: any): Observable<any>{
+    return this.httpClient.post(this.REGISTER_API, data, {headers: this.httpHeaders})
     .pipe(catchError(this.handleError));
   }
 
