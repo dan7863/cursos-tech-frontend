@@ -17,6 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { LoaderService } from '../shared/services/loader/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResetComponent } from './pages/reset/reset.component';
+import { SendComponent } from './pages/send/send.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FormCardComponent,
     RegisterComponent,
     RecoverComponent,
+    ResetComponent,
+    SendComponent,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,

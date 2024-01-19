@@ -6,14 +6,32 @@
       la contraseña que te permitirá elegir una nueva.
     </p>
     <div>
-      <form class="example-form" [formGroup]="formRecover" (ngSubmit)="onSubmit()">
+      <form
+        class="example-form"
+        [formGroup]="formReset"
+        (ngSubmit)="onSubmit()"
+      >
         <mat-form-field class="example-full-width">
-          <mat-label>Correo</mat-label>
-          <input matInput placeholder="Ej: example@gmail.com" formControlName="email" />
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="password"
+          />
         </mat-form-field>
 
-        <button class="btn btn-gray text-center w-100" [disabled] = "formRecover.invalid">
-          Enviar Enlace para Restablecer Contraseña
+        <mat-form-field class="example-full-width">
+          <mat-label>Confirmar Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="confirmPassword"
+          />
+        </mat-form-field>
+
+        <button
+          class="btn btn-gray text-center w-100"
+          [disabled]="formReset.invalid"
+        >
+          Restablecer Contraseña
         </button>
 
         <div class="text-center mt-4">

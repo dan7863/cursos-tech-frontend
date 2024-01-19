@@ -5,6 +5,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoverComponent } from './pages/recover/recover.component';
 import { authGuard } from './guards/auth.guard';
 import { roleGuard } from './guards/role.guard';
+import { ResetComponent } from './pages/reset/reset.component';
+import { SendComponent } from './pages/send/send.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 const routes: Routes = [
     {
@@ -19,8 +22,20 @@ const routes: Routes = [
     {
       path: 'recover',
       component: RecoverComponent,
-      canActivate: [roleGuard],
-      data: { expectedRole: 'admin'}
+      // canActivate: [roleGuard],
+      // data: { expectedRole: 'admin'}
+    },
+    {
+      path: 'reset/:email/:token',
+      component: ResetComponent
+    },
+    {
+      path: 'send',
+      component: SendComponent
+    },
+    {
+      path: 'confirmation/:email/:token',
+      component: ConfirmComponent
     }
 ];
 

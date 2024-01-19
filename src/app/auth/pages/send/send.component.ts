@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SweetalertService } from '../../../shared/services/sweetalert/sweetalert.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
-  selector: 'app-recover',
-  templateUrl: './recover.component.html',
-  styleUrl: './recover.component.css'
+  selector: 'app-send',
+  templateUrl: './send.component.html',
+  styleUrl: './send.component.css'
 })
-export class RecoverComponent {
-
-  formRecover!: FormGroup;
+export class SendComponent {
+  formResend!: FormGroup;
 
   recoverData ={
     email: '',
@@ -25,18 +27,18 @@ export class RecoverComponent {
   }
 
   ngOnInit(): void {
-    this.formRecover = this.formBuilder.group({
+    this.formResend = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
     });
   }
 
   onSubmit():void {
-    if (this.formRecover.valid) {
-      this.recoverData.email = this.formRecover.get('email')!.value,
-      this.authService.recover(this.recoverData).subscribe({
+    if (this.formResend.valid) {
+      this.recoverData.email = this.formResend.get('email')!.value,
+      this.authService.resend(this.recoverData).subscribe({
         next:(res) => {
-          this.sweetAlertService.successAlert(res);
-          // this.router.navigateByUrl("/")
+          this.sweetAlertService.successAlert(res.message);
+          this.router.navigateByUrl("/auth/login")
         },
         error: (error) => {
           this.sweetAlertService.errorAlert(error);

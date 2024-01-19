@@ -11,7 +11,7 @@ export class LoaderService implements HttpInterceptor{
   private totalRequests = 0;
 
   constructor() {
-    console.log("Hola service");
+   
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

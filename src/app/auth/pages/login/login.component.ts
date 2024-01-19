@@ -47,6 +47,9 @@ export class LoginComponent implements OnInit{
           this.router.navigateByUrl("/")
         },
         error: (error) => {
+          if(error == 'User not Verified. You can request an email verification'){
+            error += '&nbsp; <a href = "http://localhost:4200/auth/send" routerLink="auth/send">Here</a>';
+          }
           this.sweetAlertService.errorAlert(error);
         }
       });

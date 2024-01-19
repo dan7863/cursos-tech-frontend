@@ -1,0 +1,50 @@
+<div class = "container">
+    <mat-form-field>
+        <mat-label>Toppings</mat-label>
+        <mat-select>
+          <!-- <mat-select-trigger>
+              {{toppings.value?.[0] || ''}}
+              @if ((toppings.value?.length || 0) > 1) {
+                <span class="example-additional-selection">
+                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              }
+            </mat-select-trigger> -->
+          @for (topping of toppingList; track topping) {
+              <mat-option [value]="topping">{{ topping }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      
+      <div class = "mb-4">
+          <p class="fw-semibold">Categorías</p>
+          <ul *ngFor="let category of categories;">
+              <li>
+                  <mat-checkbox>{{category}}</mat-checkbox>
+              </li>
+          </ul>
+      </div>
+      
+      <div class = "mb-4">
+          <p class="fw-semibold">Niveles</p>
+          <ul *ngFor="let level of levels;">
+              <li>
+                  <mat-checkbox>{{level}}</mat-checkbox>
+              </li>
+          </ul>
+      </div>
+      
+      <div class = "mb-4">
+          <p class="fw-semibold">Precios</p>
+          <ul *ngFor="let price of prices;">
+              <li>
+                  <mat-checkbox>{{price}}</mat-checkbox>
+              </li>
+          </ul>
+      </div>
+      
+      <div class = "text-center">
+        <button class = "btn btn-gray">Aplicar Filtros</button>
+      </div>
+  
+</div>

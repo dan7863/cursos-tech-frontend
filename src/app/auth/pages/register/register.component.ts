@@ -45,14 +45,14 @@ export class RegisterComponent {
 
       this.authService.signUp(this.signUpData).subscribe({
         next:(res) => {
+          res += '&nbsp; <a href = "http://localhost:4200/auth/send" routerLink="auth/send">Here</a>'
           this.sweetAlertService.successAlert(res);
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl("auth/login");
         },
         error: (error) => {
           this.sweetAlertService.errorAlert(error);
         }
       });
     }  
-
   }
 }

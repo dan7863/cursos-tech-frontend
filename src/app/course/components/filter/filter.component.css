@@ -1,0 +1,28 @@
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+ul{
+  list-style-type: none;
+}
+
+::ng-deep
+  .mat-mdc-text-field-wrapper:not(.mat-form-field-disabled)
+  .mdc-text-field {
+   
+  background-color: transparent !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+++++
