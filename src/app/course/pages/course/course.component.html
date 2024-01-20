@@ -5,15 +5,17 @@
     </div>
     <div class="col-md-9">
       <app-search></app-search>
-      <app-course-card></app-course-card>
-      <div class="mt-5">
-        <mat-paginator
-          [length]="100"
-          [pageSize]="10"
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page"
-        >
-        </mat-paginator>
+      <div *ngIf="courseCards.length > 0">
+        <div *ngFor="let card of courseCards" class="mb-5">
+          <app-course-card [title] = "card.title"
+          [teacher]="card.user_name"
+          [img] = "card.image"
+          [price] = "card.price"></app-course-card>
+        </div>
+      </div>
+      <div class="mt-5 mb-5">
+       <!-- Paginator -->
+       <app-paginator (newItemEvent)="paginate($event)" [length] = "length"></app-paginator>
       </div>
     </div>
   </div>

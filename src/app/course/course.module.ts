@@ -10,11 +10,17 @@ import { SearchComponent } from './components/search/search.component';
 import { StarComponent } from './components/star/star.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxStarRatingModule } from 'ngx-star-rating';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseCardComponent } from './components/course/course-card.component';
 import { CourseComponent } from './pages/course/course.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import {JsonPipe} from '@angular/common';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
+
 @NgModule({
   declarations: [
     FilterComponent,
@@ -22,7 +28,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CourseCardComponent,
     StarComponent,
     CourseCardComponent,
-    CourseComponent
+    CourseComponent,
+    PaginatorComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +41,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgxStarRatingModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    JsonPipe,
+    FormsModule
   ]
 })
 export class CourseModule { }

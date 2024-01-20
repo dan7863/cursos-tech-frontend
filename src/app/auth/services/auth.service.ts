@@ -76,7 +76,6 @@ export class AuthService {
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log(error);
     let errorMsg: string = '';
     if (error.error instanceof ErrorEvent) {
       errorMsg = error.error.message;

@@ -9,6 +9,7 @@ export class CourseCardComponent {
   @Input() title! : string;
   @Input() description!: string;
   @Input() teacher!: string;
-  @Input() price!: string;
+  @Input() price!: number;
   @Input() rating!: string;
+  @Input() img!: string;
 }

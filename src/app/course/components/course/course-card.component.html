@@ -1,7 +1,8 @@
 <div class = "container">
     <div class = "row">
         <div class = "col-md-4">
-            <img class="img-fluid object-fit-fill img-thumbnail h-100" src = "https://codersfree.nyc3.cdn.digitaloceanspaces.com/courses/portadas/aprende-a-desplegar-proyectos-laravel-como-un-profesional-guia-practica.jpg">
+            <img class="img-fluid object-fit-fill img-thumbnail h-100" 
+            src = "{{img || 'https://codersfree.nyc3.cdn.digitaloceanspaces.com/courses/portadas/aprende-a-desplegar-proyectos-laravel-como-un-profesional-guia-practica.jpg'}}">
         </div>
         <div class = "col-md-7">
             <h5>{{title ||'title'}}</h5>
@@ -15,7 +16,7 @@
             </div>
         </div>
         <div class = "col-md-1 text-end">
-            <p class = "fw-semibold">{{price || 'price'}}</p>
+            <p class = "fw-semibold">{{price | currency:'USD' || 'price'}}</p>
         </div>
     </div>
 </div>
